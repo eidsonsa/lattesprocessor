@@ -10,16 +10,16 @@ defineSupportCode(function ({ Given, And, When, Then }) {
         await $("a[name='estudosComparativos']").click();
     })
 
-    And(/^Eu escolho o método “critérios de avaliação personalizados”$/, async () => {
-        await $("input[name='CriteriosPersonalizados'").click();
-    });
-
     And(/^O professor “Paulo” tem “3” artigos “A1”, 2 artigos “A2” e 1 artigo “B1””$/, async () => {
         
     });
 
     And(/^O professor “Sílvio” tem “3” artigos “A1”, 2 artigo “A2” e 1 artigos “B4”$/, async () => {
         
+    });
+
+    And(/^Eu escolho o método “critérios de avaliação personalizados”$/, async () => {
+        await $("input[name='CriteriosPersonalizados'").click();
     });
 
     When(/^Eu gero o ranking$/, async () => {
