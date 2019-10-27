@@ -30,4 +30,25 @@ defineSupportCode(function ({ Given, And, When, Then }) {
         
     });
 
+    Given(/^Eu estou na página “Estudos Comparativos” $/, async () => {
+        await browser.get("http://localhost:4200/");
+        await expect(browser.getTitle()).to.eventually.equal('LattesProcessor');
+        await $("a[name='estudosComparativos']").click();
+    })
+
+    And(/^O professor “Paulo” tem “36” artigos e o professor “Sílvio” tem “32” artigos”$/, async () => {
+        
+    });
+
+    And(/^Eu escolho o método “quantidade de artigos””$/, async () => {
+        await $("input[name='CriteriosPersonalizados'").click();
+    });
+
+    When(/^Eu gero o ranking$/, async () => {
+        await $("button[name='gerarRanking']").click();
+    });
+
+    Then(/^Then “Paulo” fica na primeira linha com “36” artigos e “Sílvio” na segunda com “32” artigos.$/, async () => {
+        
+    });
 }) 
