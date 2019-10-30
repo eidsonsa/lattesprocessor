@@ -9,7 +9,7 @@ And O professor “Paulo” tem “3” artigos “A1”, 2 artigos “A2” e 1
 And O professor “Sílvio” tem “3” artigos “A1”, 2 artigo “A2” e 1 artigos “B4”
 When Eu escolho o método “critérios de avaliação personalizados”
 And Eu gero o ranking
-Then Paulo” fica na primeira linha com “44” pontos, por ordem de prioridade, e “Sílvio” na segunda com “29” pontos, por ordem de prioridade.
+Then Paulo” fica na primeira linha com “44” pontos e “Sílvio” na segunda com “29” pontos.
 
 Scenario: Comparar pesquisadores com quantidades diferentes de artigos pelo método “quantidade de artigos”
 Given Eu estou na página “Estudos Comparativos”
@@ -22,7 +22,17 @@ Scenario: Comparar pesquisadores com critérios de avaliação de artigos difere
 Given Eu estou na página “Estudos Comparativos”
 And O professor “Paulo” tem “3” artigos “A1”, 2 artigos “A2” e 1 artigo “B1”
 And O professor “Sílvio” tem “3” artigos “A1”, 2 artigo “A2” e 1 artigos “B4”
-When eu escolho o método “critérios de avaliação personalizados”
-And eu atribuo os pesos “3” para “A1”, “2” para “A2”, “1” para “B1”, “0” para “B2”, “0” para “B3”, “0” para “B4”, “0” para “B5” e “0” para “C”
+When Eu escolho o método “critérios de avaliação personalizados”
+And Eu atribuo os pesos “3” para “A1”, “2” para “A2”, “1” para “B1”, “0” para “B2”, “0” para “B3”, “0” para “B4”, “0” para “B5” e “0” para “C”
 And Eu gero o ranking
 Then “Paulo” fica na primeira linha com “14” pontos e “Sílvio” na segunda com “13” pontos.
+
+Scenario: Comparar pesquisadores que possuem mesmo currículo
+Given eu estou na página “Estudos Comparativos”
+E eu quero ver qual pesquisador está melhor colocado no ranking de artigos 
+E eu escolho o método “critérios de avaliação personalizados”
+E o professor “Paulo” tem “3” artigos “A1”, 2 artigos “A2” e 1 artigo “B1”
+E o professor “Sílvio” tem “3” artigos “A1”, 2 artigo “A2” e 1 artigos “B4”
+E eu atribuo os pesos “8” para “A1”, “7” para “A2”, “6” para “B1”, “5” para “B2”, “4” para “B3”, “3” para “B4”, “2” para “B5” e “1” para “C”
+Quando eu gero o ranking
+Então “Paulo” fica na primeira linha e “Sílvio” na segunda
