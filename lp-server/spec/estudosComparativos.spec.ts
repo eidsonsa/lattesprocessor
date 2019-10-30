@@ -20,7 +20,7 @@ describe("O estudo comparativo", () => {
   it("inicia com nenhum pesquisador cadastrado"), () => {
     expect(estudo.listaQtd.length).toBe(0);
     expect(estudo.listaPesos.length).toBe(0);
-  }
+  })
 
  it("entre pesquisadores com quantidades diferentes é decrescente"), () => {
    var prof1: Professor = new Professor();
@@ -34,5 +34,18 @@ describe("O estudo comparativo", () => {
    expect(estudo.listaQtd[0].nome).toBe('Paulo');
    expect(estudo.listaQtd[1].nome).toBe('Silvio');
  })
+
+ it("entre pesquisadores com mesmo currículo funciona de maneira lexicográfica"), () => {
+   var prof1: Professor = new Professor();
+   prof1.nome = 'Paulo';
+   prof1.qtd = 36;
+   var prof2: Professor = new Professor();
+   prof2.nome = 'Sivlio';
+   prof2.qtd = 36;
+   estudo.adicionar(prof1);
+   estudo.adicionar(prof2);
+   expect(estudo.listaQtd[0].nome).toBe('Paulo');
+   expect(estudo.listaQtd[1].nome).toBe('Silvio');
+ }
 
 }) 
