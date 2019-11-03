@@ -53,4 +53,31 @@ defineSupportCode(function ({ Given, When, Then }) {
         await expect(browser.getTitle()).to.eventually.equal('página de ranqueamento');	
     });
     
+    //2
+       Given(/^que eu estou na “página de ranqueamento”$/, async () => {
+        await browser.get("http://localhost:4200/");
+        await expect(browser.getTitle()).to.eventually.equal('página de ranqueamento');
+    })
+    
+    Given(/^há no sistema os pesquisadores "(\w*)" com 2 periódicos avaliados em "(\w\d)" e "(\w*)" com 1 periódico avaliado em "(\w\d)"$/, async (p1,n1,p2,n2) => {
+        count(p1,2);
+        count(p2,1);
+    });
+    
+    Given(/^eu adiciono "(\d*\w\d)" como fórmula para ranqueamento"$/, async (form) => {
+		addform(form);
+    });
+    
+    Given(/^eu seleciono “Pesquisadores” como tipo do relatório$/, async () => {
+        addtype("Pesquisadores");
+    });
+    
+    When(/^eu seleciono a opção gerar relatório"$/, async () => {
+        await $("a[name='gerar']").click();
+    });
+    
+   	Then(/^eu posso ver uma opção para baixar o relatório$/, async () => {
+        await expect(element(by.binding("a[name='baixar']")).isPresent()).toBe(false);
+    });
+    
 })
