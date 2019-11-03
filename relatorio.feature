@@ -20,3 +20,9 @@ And eu seleciono “Pesquisadores” como tipo do relatório
 When eu seleciono a opção gerar relatório
 Then eu vejo "Erro: Relatório vazio", uma vez que não há nenhum pesquisador avaliado com “A2”
 
+Scenario: Não preenchimento de todos os campos
+Given que eu estou na “página de ranqueamento”
+And há no sistema os pesquisadores “Paulo” com 2 periódicos avaliados em “A1” e “João com 1 periódico avaliado em “A1”
+And eu preencho “A1” na opção de fórmula
+When eu seleciono a opção gerar relatório
+Then eu vejo a mensagem “Campo 'tipo' não preenchido”.
