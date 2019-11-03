@@ -26,3 +26,11 @@ And há no sistema os pesquisadores “Paulo” com 2 periódicos avaliados em �
 And eu preencho “A1” na opção de fórmula
 When eu seleciono a opção gerar relatório
 Then eu vejo a mensagem “Campo 'tipo' não preenchido”.
+
+Scenario: Fórmula inválida
+Given que eu estou na “página de ranqueamento”
+And há no sistema os pesquisadores “Paulo” com 2 periódicos avaliados em “A1” e “João com 1 periódico avaliado em “A1”
+And eu adiciono “(A1/0 + A2/3 + B1/5)/3)“ como fórmula de ranqueamento
+And eu seleciono “Grupos de pesquisas” o tipo de relatório
+When seleciono a opção “gerar relatório”
+Then eu vejo a mensagem "Fórmula inválida"
