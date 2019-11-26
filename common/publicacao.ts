@@ -3,9 +3,8 @@ export class Publicacao {
     periodico: string;
     issn: string;
 
-    constructor(titulo: string, issn: string, periodico: string) {
+    constructor(titulo: string, periodico: string) {
         this.titulo = titulo;
-        this.issn = issn;
         this.periodico = periodico;
     }
 

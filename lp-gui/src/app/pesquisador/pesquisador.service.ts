@@ -14,5 +14,30 @@ export class PesquisadorService {
   constructor(private http: HttpClient) { }
 
   // methods go here
+  uploadLattes(files: FileList): Observable<boolean> {
+    
+    let formData = new FormData();
+    for(let i = 0; i < files.length; i++) {
+      formData.append('lattesFiles', files[i], files[i].name);
+    }
+    
+    return this.http.post<any>(this.taURL + '/pesquisador/adicionar', formData).pipe(
+      retry(2),
+      map(res => {
+        if (res.success) {
+          return true;
+        } else {
+          return false;
+        }
+      })
+    );
+  }
+
+  getPesquisadores(): Observable<Pesquisador[]> {
+    return this.http.get<Pesquisador[]>(this.taURL + "/pesquisadores")
+      .pipe(
+        retry(2)
+      );
+  }
 
 }

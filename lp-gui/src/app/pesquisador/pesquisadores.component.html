@@ -1,1 +1,8 @@
-html go here
+<div *ngFor="let p of pesquisadores" class="pesquisadores-container">
+  <p>{{ p.nome }}</p>
+  <ul>
+    <li *ngFor="let publi of p.publicacoes">
+      <ul>{{ publi.titulo }}</ul>
+    </li>
+  </ul>
+</div>

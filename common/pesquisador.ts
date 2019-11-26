@@ -15,5 +15,15 @@ export class Pesquisador {
     this.publicacoes = [];
   }
 
-  // methods go here
+  copyFrom(p: Pesquisador): Pesquisador {
+    this.nome = p.nome;
+    this.orgao = p.orgao;
+    this.publicacoes = p.publicacoes;
+    return this;
+  }
+  
+  addPublicacao(p: Publicacao): Pesquisador{
+    this.publicacoes.push(p);
+    return this;
+  }
 }
