@@ -1,5 +1,5 @@
-import express = require('express');
-import bodyParser = require("body-parser");
+import express from 'express';
+import bodyParser from 'body-parser';
 
 // add imports here
 
